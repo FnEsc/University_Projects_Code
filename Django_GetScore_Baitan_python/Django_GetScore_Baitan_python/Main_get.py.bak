@@ -1,0 +1,78 @@
+# -*- coding: utf-8 -*-
+
+from django.shortcuts import render
+from django.views.decorators import csrf
+from django.shortcuts import render
+from bs4 import BeautifulSoup
+import requests
+import time
+from selenium import webdriver
+import re
+import json
+
+
+
+
+
+# 接收POST请求数据
+def main_get(request):
+    if request.POST:
+        myusername = request.POST['username']
+        mypassword = request.POST['password']
+
+        options = webdriver.ChromeOptions() # 后台打开
+        options.add_argument('--disable-extensions')
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+        browser = webdriver.Chrome(chrome_options=options) # chrome_options=option后台打开
+        browser.get('http://100.fosu.edu.cn/jsxsd/')
+        time.sleep(1)
+        try :
+            username = browser.find_element_by_id("userAccount")
+        except :
+            rlt={}
+            rlt['rlt1']='登录失败:获取100网失败'
+            rlt['rlt2']='请联系站长wx:smLin97,谢谢！'
+            return render(request, 'index.html', rlt)
+        username.send_keys(myusername)
+        psd = browser.find_element_by_id("userPassword")
+        psd.send_keys(mypassword)
+        commit = browser.find_element_by_id("btnSubmit")
+        commit.click()
+        time.sleep(1)
+        # 判断登录成功
+        # 获取cookie
+        cookie_list = browser.get_cookies()
+        # 获取成绩页面
+        browser.get('http://100.fosu.edu.cn/jsxsd/xxwcqk/xxwcqkOnkcxz.do')
+        score_html=browser.page_source
+        if "Nsb_top_menu_exit" in score_html : # 登录成功
+            logout = browser.find_element_by_class_name("Nsb_top_menu_exit")
+            logout.click()
+            time.sleep(1)
+            # 退出登录,退出浏览器
+            browser.close()
+            browser.quit()
+            # 处理字段
+            ### 此处用BeautifulSoup获取
+            soup = BeautifulSoup(score_html, 'html.parser') # 初始化函数，变量 score_html 是我们获取的页面代码，第二个参数是固定的，表示识别html代码
+            stdname = str(soup.select('.Nsb_top_menu_nc')[0]).replace("color: #000000;","color: #fff;") # 获取姓名
+            myscore = str(soup.select('.Nsb_layout_r')[0]).replace('<th class="Nsb_r_list_thb" scope="col">备注</th>','').replace('修读中','N').replace('待修读','N').replace('<td>必修</td>','<td align="center">必修</td>').replace('<td>公选</td>','<td align="center">公选</td>').replace('<td>其他</td>','<td align="center">其他</td>').replace('<td>任选</td>','<td align="center">任选</td>').replace('<td>限选</td>','<td align="center">限选</td>').replace('<td>其它</td>','<td align="center">其它</td>').replace('<a href="/jsxsd/framework/main.jsp">首页</a>&gt;&gt;学籍信息&gt;&gt;学习完成情况查看','') # 获取类为 Nsb_layout_r 的内容,此处不需要进行".encode('utf-8')"处理
+            # 优化页面
+            context          = {}
+            context['name'] = stdname
+            context['score'] = myscore
+            # print(stdname)
+            return render(request, 'result.html', context)
+        else : # 登录失败
+            rlt={}
+            rlt['rlt1']='密码错误'
+            return render(request, 'index.html', rlt)
+
+    # 没有收到post
+    else :
+        context          = {}
+        context['name'] = '<h3>Who am I？</h3>'
+        context['score'] = '<h5><a href="/index">点击访问查询页面Please</a></h5>'
+        return render(request, 'result.html', context)

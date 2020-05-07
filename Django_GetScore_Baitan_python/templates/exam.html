@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>答题游戏 | 信安协会</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	{% load staticfiles %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<div class="container">
+	<h1>社团文化节</h1>
+	<h4>「信息安全协会」欢迎你！</h4>
+	<p>以下是随机出的3道题，会根据答对的题数领取不同的奖品噢！！</p>
+</div>
+
+
+<div id="main" class="container">
+<div class="row">
+ <div class="col-xs-12 center-block">
+	<form id="answer" method="POST" action="check" onsubmit="return toVaild()">
+        {% csrf_token %}
+        {% autoescape off %}
+            {{ exam_div }}
+        {% endautoescape %}
+
+        <script>
+			function toVaild(){
+			    for (var i = 1; i <= 3; ++i) {
+	                if($('.opt'+i).val() == "0"){
+	                    alert("答案没有填写完整哦！再检查一下吧。");
+	                    return false;
+	                }
+	             }
+	             return true;
+            }
+        </script>
+        <input type="submit" id="formBtn" class="btn btn-primary btn-lg btn-block mybtn" value="提交">
+	</form>
+</div>
+</div>
+</div>
+</body>
+</html>
+
+

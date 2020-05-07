@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/Django_GetScore_Baitan_python/.idea/Django_GetScore_Baitan_python.iml" filepath="$PROJECT_DIR$/Django_GetScore_Baitan_python/.idea/Django_GetScore_Baitan_python.iml" />
+      <module fileurl="file://D:/16计算机科学与技术3/大学活动/实践周/2018~2019大三下第二学期期末实践周/学生成绩管理系统2/.idea/Students_Management.iml" filepath="D:/16计算机科学与技术3/大学活动/实践周/2018~2019大三下第二学期期末实践周/学生成绩管理系统2/.idea/Students_Management.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/TestDjango.iml" filepath="$PROJECT_DIR$/.idea/TestDjango.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../web6/.idea/web6.iml" filepath="$PROJECT_DIR$/../web6/.idea/web6.iml" />
+    </modules>
+  </component>
+</project>

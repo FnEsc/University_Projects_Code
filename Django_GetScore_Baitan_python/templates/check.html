@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>答题游戏 | 信安协会</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	{% load staticfiles %}
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" />
+
+	<!-- 可选的 Bootstrap 主题文件（一般不用引入） -->
+	<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous"> -->
+
+	<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+</head>
+<body>
+<div id="main" class="container">
+	<div class="row">
+ 		<div class="col-xs-12 center-block">
+            {% autoescape off %}
+                {{ Message }}
+            {% endautoescape %}
+{#            <h4 id="zeroRm" hidden>——SmLin97致上...<span id="remainSeconds">5</span> 秒后自动跳转</h4>#}
+            <input type="button" id="show_wr_q" onclick="show_wr_q()" value="点击查看错题" />
+            <div id="wr_q" hidden>
+                {% autoescape off %}
+                {% for row in wr_q %}
+                    <div class="item">
+                        <div class="title">
+                            <h5>{{forloop.counter}}、{{ row.1 }}</h5>
+                        </div>
+                        <div class="content">{{ row.2 }}</div>
+                        <br>正确答案：{{ row.3 }}<br>
+                    </div>
+                {% endfor %}
+                {% endautoescape %}
+                <a href="index"><br>点击继续做题<br></a>
+            </div>
+        </div>
+    </div>
+</div>
+<script> // H5不能声明type
+    if ({{ total }} ==0 ){
+        var sh = document.getElementById("zeroRm");
+        sh.removeAttribute("hidden");
+        setInterval(jump, 1000);
+        var sec = 5;
+
+        function jump() {
+            sec--;
+            if (sec > 0) {
+                document.getElementById('remainSeconds').innerHTML = sec;
+            }
+            else {
+                window.location.href = 'index';
+            }
+        }
+    }
+</script>
+<script>
+    function show_wr_q() {
+        var sh = document.getElementById("wr_q");
+        sh.removeAttribute("hidden");
+        var bt = document.getElementById("show_wr_q");
+        bt.setAttribute('hidden','true');
+    }
+</script>
+</body>
+</html>
