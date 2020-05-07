@@ -1,0 +1,39 @@
+<html>
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+    <head>
+        <meta charset="utf-8">
+        <title>注册(Register)</title>
+    </head>
+    <body>
+        <div>
+            <h1>注册(Register)</h1>
+            <form action="registerPage" method="post">
+                {% csrf_token %}
+                <table>
+                    <tr>
+                        <td><input required type="text" name="username" placeholder="请输入注册邮箱账号"></td>
+                    </tr>
+                    <tr>
+                        <td><input required type="password" name="password" placeholder="请输入密码"></td>
+                    </tr>
+                    <tr>
+                        <td><input required type="text" name="nickname" placeholder="请输入昵称"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="checkbox" name="ismaster" value="0" checked>普通用户</input>
+                            <input type="checkbox" name="ismaster" value="1">平台用户</input>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><button type="submit" class="submit_button">注册</button></td>
+                    </tr>
+                    <tr>
+                        <td><a href="index">登录</a></td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>
+

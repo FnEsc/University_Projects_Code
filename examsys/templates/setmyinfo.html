@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>myinfo</title>
+</head>
+<body>
+    <h1>个人信息</h1>
+    {{ errorMsg }}
+        <form action="setmyinfoPage" method="post">
+            {% csrf_token %}
+            <table>
+                <tr>
+                    <td><input readonly type="text" value="{{ username }}"></td>
+                </tr>
+                <tr>
+                    <td><input required type="password" name="oldpassword" placeholder="请输入旧密码"></td>
+                </tr>
+                <tr>
+                    <td><input required type="password" name="newpassword" placeholder="请输入新密码"></td>
+                </tr>
+                <tr>
+                    <td><input required type="text" name="nickname" value="{{ nickname }}"></td>
+                </tr>
+                <tr>
+                    <td><button type="submit">修改</button></td>
+                    <td><button type="reset">取消</button></td>
+                </tr>
+                <tr>
+                    <td><a href="profile">返回首页</a></td>
+                </tr>
+            </table>
+        </form>
+</body>
+</html>
