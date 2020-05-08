@@ -1,0 +1,1822 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head id="headerid1">
+	<base target="_self" />
+	<title>学生信息管理_学习完成情况查看</title>	
+	<meta http-equiv="pragma" content="no-cache" />
+	<meta http-equiv="cache-control" content="no-cache" />
+	<meta http-equiv="expires" content="0" />
+	<meta http-equiv="keywords" content="湖南强智科技教务系统" />
+	<meta http-equiv="description" content="湖南强智科技教务系统" />
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+<script type="text/javascript" src="/jsxsd/js/jquery-min.js" language="javascript"></script>
+<script type="text/javascript" src="/jsxsd/js/common.js" language="javascript"></script>
+<script type="text/javascript" src="/jsxsd/js/iepngfix_tilebg.js" language="javascript"></script>
+<link href="/jsxsd/framework/images/common.css" rel="stylesheet" type="text/css" />
+<link href="/jsxsd/framework/images/blue.css" rel="stylesheet" type="text/css" id="link_theme" />
+<link href="/jsxsd/framework/images/workstation.css" rel="stylesheet" type="text/css" /> 
+</head>
+<body><iframe id="notSession" name="notSession" style="display: none;" src=""></iframe>
+<script type="text/javascript">
+jQuery(document).ready(function(){
+	window.setInterval(function(){
+		 document.getElementById("notSession").src = "/jsxsd/framework/blankPage.jsp";
+	 }, 1000 * 60 * 10);
+});
+</script>
+
+
+
+
+
+
+
+
+
+<script>
+function opengld(){
+	if("1"!='2'){
+		alert("非教师不能进行切换");
+		return;
+	}
+	var height = $(window).height();
+	var width = $(window).width();
+	if(parseInt(height)&lt;750){
+		document.getElementById("view").value = "1";
+	}else{
+		document.getElementById("view").value = "0";
+	}
+	//取得userid
+	var userid = '20160310321';
+	var userpsw = 'topL0622';
+	//取得userid
+	document.getElementById("ticket").value = userid+"#"+userpsw;
+	document.getElementById("useraccount").value = userid;
+	document.getElementById("loginForm1").submit();
+}
+function LogoutGLD(){
+	var userid = '20160310321';
+	document.getElementById("loginForm1").action = "null/Logon.do?method=logoutFromJsxsd";
+	document.getElementById("useraccount").value = userid;
+	document.getElementById("loginForm1").submit();
+}	
+
+</script>	
+<div class="Nsb_pw">
+  <div class="Nsb_top">
+  	<form action="null/Logon.do?method=logonFromJsxsd" method="post" id="loginForm1" name="loginForm1">
+		<input type="hidden" id="view" name="view" />
+		<input type="hidden" id="useraccount" name="useraccount" />
+		<input type="hidden" id="ticket" name="ticket" />
+	</form>
+    <div class="Nsb_top_logo"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td height="75" valign="middle"><img style="display:;" id="imgLogo" src="/jsxsd/framework/images/index_logo.gif" /></td></tr></tbody></table></div>
+    <div class="Nsb_top_menu">        
+        <div id="Top1_divLoginName" class="Nsb_top_menu_nc" style="color: #000000;">林上满(20160310321)</div>
+       
+        <ul>
+            <li><a id="TopUserSetting" info="个人设置" href="#" class="Nsb_top_menu_id"><img src="/jsxsd/framework/images/Nsb_top_p1.jpg" id="Top1_imgTopSmallUserPhoto" /></a></li>
+            <span></span>
+                          
+            
+            <li><a id="TopTheme" info="切换主题" href="#" class="Nsb_top_menu_style" onclick="changeDisplay('divTopTheme')"></a></li>
+            <span id="Top1_LBackManageSpliter"></span>
+            <span id="Top1_LExitSpliter"></span>
+            <li id="Top1_LBackManage">
+            	<a info="个人设置" href="/jsxsd/grsz/grsz_xggrxx.do?Ves632DSdyV=NEW_XSD_WDZM" class="Nsb_top_menu_options"></a>
+            </li>
+             
+        	 	<li id="Top1_LExit"><a info="退出" href="javascript:Logout('/jsxsd');" class="Nsb_top_menu_exit"></a></li>
+        	 
+            
+            
+        </ul>            
+     </div>   
+     <div id="divTopTheme" group="topDiv" style="display:none;z-index:10000">      
+        <div class="Nsb_top_c Nsb_top_c3">
+          <ul>
+            <li id="theme_blue" theme="blue" index="1" class="Nsb_top_c3_11" onclick="javascript:changeTheme('/jsxsd','blue',this);"></li>
+            <li id="theme_green" theme="green" index="2" class="Nsb_top_c3_2" onclick="javascript:changeTheme('/jsxsd','green',this);"></li>
+            <li id="theme_orange" theme="orange" index="3" class="Nsb_top_c3_3" onclick="javascript:changeTheme('/jsxsd','orange',this);"></li>
+            <li id="theme_red" theme="red" index="4" class="Nsb_top_c3_4" onclick="javascript:changeTheme('/jsxsd','red',this);"></li>
+            <li id="theme_purple" theme="purple" index="5" class="Nsb_top_c3_5" onclick="javascript:changeTheme('/jsxsd','purple',this);"></li>
+            <li id="theme_gray" theme="gray" index="6" class="Nsb_top_c3_6" onclick="javascript:changeTheme('/jsxsd','gray',this);"></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+</div>
+<div class="Nsb_menu_pw">
+  <div class="Nsb_pw">
+    <div id="divFirstMenuClass" class="Nsb_menu menu_cn">
+      <ul>         
+         <li title="首页">
+         	<a class="Nsb_menu_li_h" id="homepage" href="/jsxsd/framework/xsMain.jsp"><span></span></a>
+         </li>
+         
+         	<li title="我的桌面">
+         		<a id="calender_user_schedule" href="/jsxsd/jxzl/jxzl_query?Ves632DSdyV=NEW_XSD_WDZM">我的桌面</a>
+         	</li>
+         
+         	<li title="学籍成绩">
+         		<a id="calender_user_schedule" href="/jsxsd/xsxj/xjxxgl.do?Ves632DSdyV=NEW_XSD_XJCJ">学籍成绩</a>
+         	</li>
+         
+         	<li title="培养管理">
+         		<a id="calender_user_schedule" href="/jsxsd/pyfa/topyfamx?Ves632DSdyV=NEW_XSD_PYGL">培养管理</a>
+         	</li>
+         
+         	<li title="考试报名">
+         		<a id="calender_user_schedule" href="/jsxsd/xsks/xsksap_query?Ves632DSdyV=NEW_XSD_KSBM">考试报名</a>
+         	</li>
+         
+         	<li title="教学评价">
+         		<a id="calender_user_schedule" href="/jsxsd/xspj/xspj_find.do?Ves632DSdyV=NEW_XSD_JXPJ">教学评价</a>
+         	</li>
+         
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="Nsb_pw">   
+  	
+
+
+
+
+
+
+  
+<div id="LeftMenu1_divChildMenu" class="Nsb_layout_l Nsb_l_list">
+	<div class="Nsb_l_list_top"></div>
+	
+</div> 
+ 	<div class="Nsb_layout_r">
+ 		<div class="Nsb_r_title">
+	 		<a href="/jsxsd/framework/main.jsp">首页</a>&gt;&gt;学籍信息&gt;&gt;学习完成情况查看
+		</div> 
+		<br />
+		<table width="100%" border="0">
+			<tbody><tr>
+		 		<td align="center" colspan="5">
+		 			<h2>2016 计算机科学与技术  专业修读情况审核报告</h2>
+		 		</td>
+	 		</tr>
+		</tbody></table>
+		　
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="Nsb_r_list Nsb_table">
+            <tbody><tr><th class="Nsb_r_list_thb" scope="col">课程属性</th>
+                <!--  
+                <th class="Nsb_r_list_thb" scope="col">要求学分</th>
+                -->
+                <th class="Nsb_r_list_thb" scope="col">已修学分</th>
+                <th class="Nsb_r_list_thb" scope="col">正修读学分</th>
+                
+                <!--
+                <th class="Nsb_r_list_thb" scope="col">还需学分</th>
+                --> 
+            </tr>
+            
+            
+            	<tr>
+	 				<td>必修</td> 
+	 				<td align="center">77.0</td>
+	 				<td align="center">64.5</td>  
+	 			</tr>
+            
+            	<tr>
+	 				<td>公选</td> 
+	 				<td align="center">4.0</td>
+	 				<td align="center">0.0</td>  
+	 			</tr>
+            
+            	<tr>
+	 				<td>其它</td> 
+	 				<td align="center">0.0</td>
+	 				<td align="center">0.0</td>  
+	 			</tr>
+            
+            	<tr>
+	 				<td>任选</td> 
+	 				<td align="center">0.0</td>
+	 				<td align="center">2.0</td>  
+	 			</tr>
+            
+            	<tr>
+	 				<td>限选</td> 
+	 				<td align="center">0.0</td>
+	 				<td align="center">0.0</td>  
+	 			</tr>
+            
+	 		<tr>
+	 			<td align="center"><b>总计</b></td> 
+	 			<td align="center"><b>81.0</b></td>
+	 			<td align="center"><b>66.5</b></td> 
+	 		</tr>
+	 	</tbody></table> 
+	 	<br /> 
+	 	　
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="Nsb_r_list Nsb_table">
+            <tbody><tr><th class="Nsb_r_list_thb" scope="col">课程编号</th>
+                <th class="Nsb_r_list_thb" scope="col">课程名称</th>
+                <th class="Nsb_r_list_thb" scope="col">学分</th>
+                <!--  
+                <th class="Nsb_r_list_thb" scope="col">课程类别</th>
+                -->
+                <th class="Nsb_r_list_thb" scope="col">课程属性</th>
+                <th class="Nsb_r_list_thb" scope="col">总成绩</th>
+                <th class="Nsb_r_list_thb" scope="col">备注</th> 
+            </tr>
+            
+            	<tr>
+					<td colspan="7" align="left" style="background-color:#E5F3FE">
+						<b>必修</b>
+					</td>
+				</tr>
+				
+					
+						<tr>
+							<td>001001</td>
+							<td>军事理论</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>87</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001004</td>
+							<td>学科概论</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>87</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001005</td>
+							<td>大学生心理健康指导</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>91</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001010</td>
+							<td>大学生职业发展与就业指导1</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>89</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001023</td>
+							<td>大学生创新创业基础1</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>88</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001025</td>
+							<td>大学物理1B2</td>
+							<td>2.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>74</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001026</td>
+							<td>大学物理实验1B</td>
+							<td>2</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>81</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>004001</td>
+							<td>军训</td>
+							<td>2</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>95</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>A01002</td>
+							<td>大学英语1</td>
+							<td>3</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>78</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>A01003</td>
+							<td>大学英语2</td>
+							<td>3</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>73</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>A01108</td>
+							<td>大学英语（跨文化交际英语）</td>
+							<td>3</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>74</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>B01001</td>
+							<td>高等数学A1</td>
+							<td>5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>79</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>B01002</td>
+							<td>高等数学A2</td>
+							<td>6</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>60</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>B01007</td>
+							<td>线性代数</td>
+							<td>2.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>67</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>B01008</td>
+							<td>概率论与数理统计</td>
+							<td>3.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>77</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>B01045</td>
+							<td>大学物理B1</td>
+							<td>2.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>72</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>B13028</td>
+							<td>离散数学</td>
+							<td>3.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>76</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42010</td>
+							<td>程序设计语言C</td>
+							<td>3.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>84</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C52001</td>
+							<td>数字电子技术</td>
+							<td>3.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>74</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C53024</td>
+							<td>数据结构</td>
+							<td>4.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>75</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C54003</td>
+							<td>专业导入课程设计</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>84</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C54004</td>
+							<td>程序设计语言课程设计</td>
+							<td>2</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>90</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>J01001</td>
+							<td>大学体育1</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>84</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>J01002</td>
+							<td>大学体育2</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>84</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>J01003</td>
+							<td>大学体育3</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>72</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+				
+					
+						<tr>
+							<td>S01001</td>
+							<td>思想道德修养与法律基础</td>
+							<td>3</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>78</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>S01002</td>
+							<td>中国近现代史纲要</td>
+							<td>2</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>90</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>S01003</td>
+							<td>马克思主义基本原理</td>
+							<td>3</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>70</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>S01006</td>
+							<td>形势与政策1</td>
+							<td>0.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>88</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>S01007</td>
+							<td>形势与政策2</td>
+							<td>0.5</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>68</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>S01008</td>
+							<td>形势与政策3</td>
+							<td>1</td>
+							<!--  
+							<td>其他</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>88</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+				
+					
+						<tr>
+							<td>s01106</td>
+							<td>毛泽东思想和中国特色社会主义理论体系概论</td>
+							<td>6</td>
+							<!--  
+							<td>公共课</td>
+							-->
+							<td>必修</td>
+							
+							 	
+							   	
+							   		<td>82</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				 
+				
+				
+					
+						<tr>
+							<td>001012</td>
+							<td>大学生职业发展与就业指导3</td>
+							<td>1</td>
+							<!-- 
+							<td>公共课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001022</td>
+							<td>知识产权概论</td>
+							<td>1</td>
+							<!-- 
+							<td>公共课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>001024</td>
+							<td>大学生创新创业基础2</td>
+							<td>1</td>
+							<!-- 
+							<td>公共课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42006</td>
+							<td>计算机组成原理</td>
+							<td>4.5</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42006</td>
+							<td>计算机组成原理</td>
+							<td>4.5</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42007</td>
+							<td>汇编语言程序设计</td>
+							<td>2.5</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42007</td>
+							<td>汇编语言程序设计</td>
+							<td>2.5</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42008</td>
+							<td>操作系统原理</td>
+							<td>3.5</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42013</td>
+							<td>计算机网络原理</td>
+							<td>4</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42013</td>
+							<td>计算机网络原理</td>
+							<td>4</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C42014</td>
+							<td>面向对象程序设计</td>
+							<td>3</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43002</td>
+							<td>数据库系统原理</td>
+							<td>3.5</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43003</td>
+							<td>数值分析</td>
+							<td>2.5</td>
+							<!-- 
+							<td>学科基础课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43004</td>
+							<td>编译原理</td>
+							<td>3</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43006</td>
+							<td>计算机接口技术</td>
+							<td>2</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43009</td>
+							<td>Java 程序设计</td>
+							<td>3</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43009</td>
+							<td>Java 程序设计</td>
+							<td>3</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43009</td>
+							<td>Java 程序设计</td>
+							<td>3</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43009</td>
+							<td>Java 程序设计</td>
+							<td>3</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43010</td>
+							<td>Web编程与设计</td>
+							<td>2</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C43062</td>
+							<td>算法分析与设计</td>
+							<td>2</td>
+							<!-- 
+							<td>专业课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>C44004</td>
+							<td>操作系统课程设计</td>
+							<td>2</td>
+							<!-- 
+							<td>实践教学</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>J01004</td>
+							<td>大学体育4</td>
+							<td>1</td>
+							<!-- 
+							<td>公共课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>a01116</td>
+							<td>学术英语</td>
+							<td>3</td>
+							<!-- 
+							<td>公共课</td>
+							 -->
+							<td>必修</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+				
+					
+				
+				
+				
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td> 		
+				</tr>
+            
+            	<tr>
+					<td colspan="7" align="left" style="background-color:#E5F3FE">
+						<b>公选</b>
+					</td>
+				</tr>
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+						<tr>
+							<td>M0x008</td>
+							<td>中国茶叶科学和茶道</td>
+							<td>2</td>
+							<!--  
+							<td>公共选修课</td>
+							-->
+							<td>公选</td>
+							
+							 	
+							   	
+							   		<td>90</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+						<tr>
+							<td>eyX115</td>
+							<td>口才艺术与社交礼仪</td>
+							<td>2</td>
+							<!--  
+							<td>公共选修课</td>
+							-->
+							<td>公选</td>
+							
+							 	
+							   	
+							   		<td>94</td>
+							   	
+							
+							<td> </td>
+						</tr>
+					
+				
+					
+				 
+				
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				
+				
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td> 		
+				</tr>
+            
+            	<tr>
+					<td colspan="7" align="left" style="background-color:#E5F3FE">
+						<b>其它</b>
+					</td>
+				</tr>
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				 
+				
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				
+				
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td> 		
+				</tr>
+            
+            	<tr>
+					<td colspan="7" align="left" style="background-color:#E5F3FE">
+						<b>任选</b>
+					</td>
+				</tr>
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				 
+				
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+						<tr>
+							<td>a0x039</td>
+							<td>音乐基础知识与音乐欣赏</td>
+							<td>1</td>
+							<!-- 
+							<td></td>
+							 -->
+							<td>任选</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+					
+						<tr>
+							<td>eyx033</td>
+							<td>批创思维导论</td>
+							<td>1</td>
+							<!-- 
+							<td></td>
+							 -->
+							<td>任选</td> 
+							<td><font color="blue">修读中</font></td>
+							<td> </td>
+						</tr>
+					
+				
+				
+				
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td> 		
+				</tr>
+            
+            	<tr>
+					<td colspan="7" align="left" style="background-color:#E5F3FE">
+						<b>限选</b>
+					</td>
+				</tr>
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				 
+				
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+					
+				
+				
+				
+				<tr>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td>
+					<td> </td> 		
+				</tr>
+             
+	 	</tbody></table>
+	 	<br /> 
+	</div>
+</div>
+
+<div id="Footer1_divCopyright" class="Nsb_pw" style="display:;">
+  <div class="Nsb_rights">Copyright (C) 湖南强智科技发展有限公司  All Rights Reserved 湘ICP 备12010071号</div>
+</div> 
+
+</body></html>
