@@ -5,7 +5,7 @@ from selenium import webdriver
 import re
 import json
 
-def getscore(myusername='20160310321',mypassword='topL0622'):
+def getscore(myusername='study number',mypassword='******'):
     url='http://100.fosu.edu.cn/jsxsd/'
     print("正在登录100网...")
     options = webdriver.ChromeOptions() # 后台打开
